@@ -7,7 +7,7 @@
   <div class="container">
     <div class="row">
       <!--Itinerary-->
-      <div class="col-xs-4">
+      <div class="col-sm-4">
         <app-day *ngFor="let day of days; let i = index" [day]=day (onDayClick)='dayClicked($event)'>
           <h2>Day {{ i + 1 }} <span>{{ getDate(i) }}</span></h2>
         </app-day>
@@ -15,9 +15,18 @@
           Add Day
         </button>
       </div>
-      <!--Activities-->
-      <div class="col-xs-8">
-        <app-activity *ngFor="let activity of displayActivities" [activity]=activity ></app-activity>
+      <!--Day Display-->
+      <div class="col-sm-8">
+        <!--Day Editor-->
+        <app-edit-day
+          *ngIf="selectedDay" 
+          [selectedDay]="selectedDay">
+        </app-edit-day>
+        <!--Acitivity Display-->
+        <app-activity 
+          *ngFor="let activity of displayActivities" 
+          [activity]=activity>
+        </app-activity>
       </div>
     </div>
   </div>

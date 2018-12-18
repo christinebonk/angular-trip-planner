@@ -11,9 +11,9 @@ export class AppComponent {
 	title = 'trip-planner';
 	startDate = 'February 8 2019';
 	days: Day[] = [
-		new Day('Toronto', 'Santiago', 'February 8 2019'),
-		new Day('Santiago', '', 'February 9 2019'),
-		new Day('Santiago', 'Punta Arenas', 'February 10 2019')
+		new Day('Toronto', 'New York', 'February 8 2019'),
+		new Day('New York', '', 'February 9 2019'),
+		new Day('New York', 'Chicago', 'February 10 2019')
 	];
 	activities: Activity[] = [
 		new Activity('Bellavista', 2, 'February 9 2019'),
@@ -22,11 +22,12 @@ export class AppComponent {
 		new Activity('Flying', 6, 'February 10 2019')
 	]
 	displayActivities = [];
+	selectedDay: string; 
 
 	getDate(i) {
 		const startDate = new Date(this.startDate);
 		let date = startDate.setDate(startDate.getDate() + i);
-		date = new Date(date);
+		let selectedDate = new Date(date);
 		const monthNames = [
 		"Jan", "Feb", "Mar",
 		"Apr", "May", "Jun", "Jul",
@@ -35,9 +36,9 @@ export class AppComponent {
 		];
 		const dayOfWeek = [ "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"
 		]
-		const day = date.getDate();
-		const monthIndex = date.getMonth();
-		const weekIndex = date.getDay();
+		const day = selectedDate.getDate();
+		const monthIndex = selectedDate.getMonth();
+		const weekIndex = selectedDate.getDay();
 		return dayOfWeek[weekIndex] + ', ' + monthNames[monthIndex] + ' ' + day;
 	}
 
@@ -47,6 +48,7 @@ export class AppComponent {
 
 	dayClicked(day) {
 		this.displayActivities = this.activities.filter(activity => activity.activityDate === day.date);
+		this.selectedDay = day;
 	}
 
 }

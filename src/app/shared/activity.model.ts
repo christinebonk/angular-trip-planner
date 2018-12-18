@@ -1,5 +1,5 @@
 export class Activity {
-	constructor (public name: string, public activityTime: number, public activityDate: date) {
+	constructor (public name: string, public activityTime: number, public activityDate: string) {
 	}
 }
 
