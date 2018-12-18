@@ -20,9 +20,6 @@
       </div>
       <!--Day Display-->
       <div class="col-sm-8">
-        <section id="day-display">
-          <h3 *ngIf="selectedDay"> {{ selectedDay.startLocation }} <span *ngIf="selectedDay.endLocation">to</span> {{ selectedDay.endLocation }} </h3>
-        </section>
         <!--Day Editor-->
         <app-edit-day
           *ngIf="selectedDay" 

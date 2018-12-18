@@ -1,3 +1,13 @@
 form {
 	display: flex;
 }
+
+button {
+	background: #992F6E;
+	color: white;
+}
+
+.btn-container {
+	display: flex;
+	align-items: flex-end;
+}
