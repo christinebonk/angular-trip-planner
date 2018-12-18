@@ -1,0 +1,5 @@
+<a href="#" class="day-container list-group-item" (click)='viewDay()'>
+	<ng-content></ng-content>
+	<span>{{ day.startLocation }} </span>
+	<span *ngIf='day.endLocation'>to {{ day.endLocation }}</span>
+</a>
