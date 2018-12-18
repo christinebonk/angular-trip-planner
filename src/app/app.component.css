@@ -1,9 +1,22 @@
-h2 {
-	font-size: 1.3rem;
-	color: #00A1E7;
+h1 {
+	color: #EA561C;
 }
 
-span {
+h2 {
+	font-size: 1.1rem;
+	color: black;
+}
+
+span.date {
 	font-weight: 400;
 	color: black;
+}
+
+h3 {
+	color: #992F6E;
+	font-size: 2rem;
+}
+
+button {
+	background: #EA561C;
 }

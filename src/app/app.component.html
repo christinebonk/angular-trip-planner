@@ -1,6 +1,6 @@
 <!--Header-->
 <header>
-  <h1>Chile Trip</h1>
+  <h1>Your Trip</h1>
 </header>
 <!--Main Content-->
 <main>
@@ -8,8 +8,11 @@
     <div class="row">
       <!--Itinerary-->
       <div class="col-sm-4">
+        <section id="itinerary-display">
+          <h3>Itinerary Overview</h3>
+        </section>
         <app-day *ngFor="let day of days; let i = index" [day]=day (onDayClick)='dayClicked($event)'>
-          <h2>Day {{ i + 1 }} <span>{{ getDate(i) }}</span></h2>
+          <h2>Day {{ i + 1 }} <span class="date">{{ getDate(i) }}</span></h2>
         </app-day>
         <button class="btn btn-primary" (click)='addDay()'>
           Add Day
@@ -17,6 +20,9 @@
       </div>
       <!--Day Display-->
       <div class="col-sm-8">
+        <section id="day-display">
+          <h3 *ngIf="selectedDay"> {{ selectedDay.startLocation }} <span *ngIf="selectedDay.endLocation">to</span> {{ selectedDay.endLocation }} </h3>
+        </section>
         <!--Day Editor-->
         <app-edit-day
           *ngIf="selectedDay" 
@@ -27,6 +33,7 @@
           *ngFor="let activity of displayActivities" 
           [activity]=activity>
         </app-activity>
+        <app-add-activity></app-add-activity>
       </div>
     </div>
   </div>

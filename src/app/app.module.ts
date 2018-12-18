@@ -6,13 +6,15 @@ import { AppComponent } from './app.component';
 import { ActivityComponent } from './activity/activity.component';
 import { DayComponent } from './day/day.component';
 import { EditDayComponent } from './edit-day/edit-day.component';
+import { AddActivityComponent } from './add-activity/add-activity.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ActivityComponent,
     DayComponent,
-    EditDayComponent
+    EditDayComponent,
+    AddActivityComponent  
   ],
   imports: [
     BrowserModule,

@@ -34,7 +34,7 @@ export class AppComponent {
 		"Aug", "Sep", "Oct",
 		"Nov", "Dec"
 		];
-		const dayOfWeek = [ "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"
+		const dayOfWeek = [ "Sun", "Mon", "Tues", "Wed", "Thurs", "Fri", "Sat"
 		]
 		const day = selectedDate.getDate();
 		const monthIndex = selectedDate.getMonth();
