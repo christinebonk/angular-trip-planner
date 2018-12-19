@@ -21,10 +21,19 @@ export class AppComponent {
 		new Activity('Lunch', 4, 'February 10 2019'),
 		new Activity('Flying', 6, 'February 10 2019')
 	]
-	displayActivities = [];
+	displayActivities: [] = [];
 	selectedDay: string; 
+	daysAway: string = this.getTimeDiff(this.startDate);
 
-	getDate(i) {
+	getTimeDiff(endDate) { //calculates how many days away the trip is
+		const date1 = new Date();
+		const date2 = new Date(endDate);
+		const timeDiff = Math.abs(date2.getTime() - date1.getTime());
+		const diffDays = Math.ceil(timeDiff / (1000 * 3600 * 24)); 
+		return diffDays
+	}
+
+	getDate(i) { //gets the date based on start date
 		const startDate = new Date(this.startDate);
 		let date = startDate.setDate(startDate.getDate() + i);
 		let selectedDate = new Date(date);
@@ -42,11 +51,11 @@ export class AppComponent {
 		return dayOfWeek[weekIndex] + ', ' + monthNames[monthIndex] + ' ' + day;
 	}
 
-	addDay() {
+	addDay() { //adds a new date to days array
 		this.days.push(new Day('', '', ''))
 	}
 
-	dayClicked(day) {
+	dayClicked(day) { //filters the activities for the day clicked
 		this.displayActivities = this.activities.filter(activity => activity.activityDate === day.date);
 		this.selectedDay = day;
 	}
