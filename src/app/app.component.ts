@@ -11,15 +11,15 @@ export class AppComponent {
 	title = 'trip-planner';
 	startDate = 'February 8 2019';
 	days: Day[] = [
-		new Day('Toronto', 'New York', 'February 8 2019'),
-		new Day('New York', '', 'February 9 2019'),
-		new Day('New York', 'Chicago', 'February 10 2019')
+		new Day('Toronto', 'New York', 'Feb 8 2019'),
+		new Day('New York', '', 'Feb 9 2019'),
+		new Day('New York', 'Chicago', 'Feb 10 2019')
 	];
 	activities: Activity[] = [
-		new Activity('Bellavista', 2, 'February 9 2019'),
-		new Activity('Lunch', 3, 'February 9 2019'),
-		new Activity('Lunch', 4, 'February 10 2019'),
-		new Activity('Flying', 6, 'February 10 2019')
+		new Activity('Bellavista', 2, 'Feb 9 2019'),
+		new Activity('Lunch', 3, 'Feb 9 2019'),
+		new Activity('Lunch', 4, 'Feb 10 2019'),
+		new Activity('Flying', 6, 'Feb 10 2019')
 	]
 	displayActivities: [] = [];
 	selectedDay: string; 
@@ -58,7 +58,10 @@ export class AppComponent {
 	}
 
 	addDay() { //adds a new date to days array
-		this.days.push(new Day('', '', ''))
+		let newDay = new Day ('', '', '');
+		let dayNumber = this.days.length;
+		newDay.date = this.getDate(dayNumber);
+		this.days.push(newDay);
 	}
 
 	dayClicked(day) { //filters the activities for the day clicked

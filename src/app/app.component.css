@@ -15,6 +15,7 @@ span.date {
 h3 {
 	color: #197278;
 	font-size: 2rem;
+	text-decoration: underline;
 }
 
 h4 {
@@ -35,6 +36,11 @@ main {
 	padding-top: 20px;
 }
 
-section#day-display h3 {
-	text-decoration: underline;
+
+section#trip-stats {
+	display: flex;
+}
+
+section#trip-stats h4{
+	margin-right: 30px;
 }

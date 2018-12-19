@@ -1,9 +1,11 @@
 <!--Header-->
 <header>
   <h1>Your Trip</h1>
-  <h4>Starts {{startDate}} </h4>
-  <h4>{{days.length}} Days Long</h4>
-  <h4>{{daysAway}} Days Away</h4>
+  <section id="trip-stats">
+    <h4>Starts {{startDate}} </h4>
+    <h4>{{days.length}} Days Long</h4>
+    <h4>{{daysAway}} Days Away</h4>
+  </section>
 </header>
 <!--Main Content-->
 <main>
@@ -33,10 +35,14 @@
           </app-edit-day>
         </section>
         <!--Acitivity Display-->
-        <app-activity 
-          *ngFor="let activity of displayActivities" 
-          [activity]=activity>
-        </app-activity>
+        <section id="activity-container">
+          <ul class="activity-list">
+            <app-activity 
+              *ngFor="let activity of displayActivities" 
+              [activity]=activity>
+            </app-activity>
+          </ul>
+        </section>
         <app-add-activity *ngIf="selectedDay" (newActivity)="onNewActivityAdded($event)"></app-add-activity>
       </div>
     </div>

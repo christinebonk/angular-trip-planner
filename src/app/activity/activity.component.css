@@ -1,0 +1,33 @@
+li {
+	list-style-type: none;
+	width: 20%;
+	position: relative;
+	text-align: center;
+	font-size: 1.2rem;
+}
+
+li:before {
+	content: " ";
+	width: 10px;
+	height: 10px;
+	border: 1px solid grey;
+	display: block;
+	text-align: center;
+	margin: 0 auto 10px;
+	border-radius: 50%;
+	line-height: 30px;
+	position: relative;
+	background-color: white;
+	z-index: 1;
+}
+
+li:after {
+	content: "";
+	position: absolute;
+	width: 1px;
+	height: 100%;
+	border: 1px solid white;
+	left: 15px;
+	left: -50%;
+	z-index: 0;
+}
