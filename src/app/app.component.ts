@@ -25,6 +25,11 @@ export class AppComponent {
 	selectedDay: string; 
 	daysAway: string = this.getTimeDiff(this.startDate);
 
+	onNewActivityAdded(activity) {
+		activity.activityDate = this.selectedDay.date;
+		this.activities.push(activity);
+	}
+
 	getTimeDiff(endDate) { //calculates how many days away the trip is
 		const date1 = new Date();
 		const date2 = new Date(endDate);

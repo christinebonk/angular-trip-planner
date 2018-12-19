@@ -33,7 +33,7 @@
           *ngFor="let activity of displayActivities" 
           [activity]=activity>
         </app-activity>
-        <app-add-activity></app-add-activity>
+        <app-add-activity (newActivity)="onNewActivityAdded($event)"></app-add-activity>
       </div>
     </div>
   </div>

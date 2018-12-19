@@ -1,14 +1,14 @@
 <form>
 	<div class="form-group">
 		<label for="activity">Activity</label>
-		<input type="text" class="form-control" id="activity" name="activity">
+		<input type="text" class="form-control" id="activity" name="activity" #activityNameInput>
 	</div>
 	<div class="form-group">
 		<label for="time">Time</label>
-		<input type="text" class="form-control" id="time" name="time">
+		<input type="text" class="form-control" id="time" name="time" #activityTimeInput>
 	</div>
 	<div class="form-group btn-container">
-		<button class="btn">
+		<button class="btn" (click)="addActivity(activityNameInput, activityTimeInput)">
 			Add Activity
 		</button>
 	</div>
