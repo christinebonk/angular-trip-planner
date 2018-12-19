@@ -28,6 +28,7 @@ export class AppComponent {
 	onNewActivityAdded(activity) {
 		activity.activityDate = this.selectedDay.date;
 		this.activities.push(activity);
+		this.dayClicked(this.selectedDay);
 	}
 
 	getTimeDiff(endDate) { //calculates how many days away the trip is
@@ -62,6 +63,7 @@ export class AppComponent {
 
 	dayClicked(day) { //filters the activities for the day clicked
 		this.displayActivities = this.activities.filter(activity => activity.activityDate === day.date);
+		this.displayActivities = this.displayActivities.sort((a,b) => parseFloat(a.activityTime) - parseFloat(b.activityTime));
 		this.selectedDay = day;
 	}
 
