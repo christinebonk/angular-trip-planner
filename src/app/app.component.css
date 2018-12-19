@@ -1,5 +1,5 @@
 h1 {
-	color: #EA561C;
+	color: white;
 }
 
 h2 {
@@ -13,16 +13,28 @@ span.date {
 }
 
 h3 {
-	color: #992F6E;
+	color: #197278;
 	font-size: 2rem;
 }
 
+h4 {
+	color: #C44536;
+}
+
 button {
-	background: #EA561C;
+	background: #C44536;
 }
 
 header {
-	background: #992F6E;
+	background: #283D3B;
 	padding: 20px;
-	margin-bottom: 20px;
+}
+
+main {
+	background: #EDDDD4;
+	padding-top: 20px;
+}
+
+section#day-display h3 {
+	text-decoration: underline;
 }

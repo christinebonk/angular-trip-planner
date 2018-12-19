@@ -2,7 +2,8 @@
 }
 
 .day-container:hover {
-	background: #F6F740;;
+	background: #C44536;
+	transition: 0.3s ease;
 	
 }
 

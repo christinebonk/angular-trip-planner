@@ -23,17 +23,21 @@
       </div>
       <!--Day Display-->
       <div class="col-sm-8">
-        <!--Day Editor-->
-        <app-edit-day
-          *ngIf="selectedDay" 
-          [selectedDay]="selectedDay">
-        </app-edit-day>
+        <!--Day Title-->
+        <section id="day-display">
+          <h3 *ngIf="selectedDay"> {{ selectedDay.date }} </h3>
+          <!--Day Editor-->
+          <app-edit-day
+            *ngIf="selectedDay" 
+            [selectedDay]="selectedDay">
+          </app-edit-day>
+        </section>
         <!--Acitivity Display-->
         <app-activity 
           *ngFor="let activity of displayActivities" 
           [activity]=activity>
         </app-activity>
-        <app-add-activity (newActivity)="onNewActivityAdded($event)"></app-add-activity>
+        <app-add-activity *ngIf="selectedDay" (newActivity)="onNewActivityAdded($event)"></app-add-activity>
       </div>
     </div>
   </div>
