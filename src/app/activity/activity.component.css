@@ -1,8 +1,31 @@
+
+li {
+	display: flex;
+	padding: 5px;
+}
+
+span.activity-time {
+	font-weight: bold;
+	position:relative;
+	display: block;
+	width: 75px;
+}
+
+span.activity-name {
+}
+
+.clearfix::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+
+/*stupid line thing*/
+
 li {
 	list-style-type: none;
-	width: 20%;
 	position: relative;
-	text-align: center;
 	font-size: 1.2rem;
 
 }
@@ -14,8 +37,8 @@ li::before {
 	border: 1px solid #C44536;
 	display: block;
 	position: relative;
-	top: 20px;
-	right: 20px;
+	top: 7px;
+	right: -60px;
 	border-radius: 50%;
 	background-color: #C44536;
 }
@@ -26,7 +49,7 @@ li:after {
 	width: 2px;
 	height: 100%;
 	border: 1px solid #C44536;
-	left: -14px;
+	left: 72px;
 	top: 20px;
 	z-index: 0;
 }

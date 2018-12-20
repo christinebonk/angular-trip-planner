@@ -1,5 +1,6 @@
 <ul class="activity-list">
 	<li *ngFor="let activity of activities">
-		<span> {{ activity.activityTime }} </span>{{ activity.name }}
+		<span class="activity-time">{{ activity.activityTime }}</span>
+		<span class="activity-name">{{ activity.name }}</span>
 	</li>
 </ul>
