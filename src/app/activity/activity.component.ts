@@ -7,9 +7,9 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class ActivityComponent implements OnInit {
 	@Input() activity; 
-  constructor() { }
-
-  ngOnInit() {
-  }
+	@Input() activities; 
+	constructor() { }
+	ngOnInit() {
+	}
 
 }

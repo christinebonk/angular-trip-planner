@@ -44,3 +44,7 @@ section#trip-stats {
 section#trip-stats h4{
 	margin-right: 30px;
 }
+
+app-activity:last-child > li[_ngcontent-c3] {
+	color: blue;
+}

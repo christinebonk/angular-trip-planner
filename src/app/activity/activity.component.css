@@ -4,30 +4,34 @@ li {
 	position: relative;
 	text-align: center;
 	font-size: 1.2rem;
+
 }
 
-li:before {
+li::before {
 	content: " ";
-	width: 10px;
-	height: 10px;
-	border: 1px solid grey;
+	width: 15px;
+	height: 15px;
+	border: 1px solid #C44536;
 	display: block;
-	text-align: center;
-	margin: 0 auto 10px;
-	border-radius: 50%;
-	line-height: 30px;
 	position: relative;
-	background-color: white;
-	z-index: 1;
+	top: 20px;
+	right: 20px;
+	border-radius: 50%;
+	background-color: #C44536;
 }
 
 li:after {
 	content: "";
 	position: absolute;
-	width: 1px;
+	width: 2px;
 	height: 100%;
-	border: 1px solid white;
-	left: 15px;
-	left: -50%;
+	border: 1px solid #C44536;
+	left: -14px;
+	top: 20px;
 	z-index: 0;
 }
+
+li:last-child:after {
+	content: none;
+}
+

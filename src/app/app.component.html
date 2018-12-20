@@ -36,12 +36,11 @@
         </section>
         <!--Acitivity Display-->
         <section id="activity-container">
-          <ul class="activity-list">
+          
             <app-activity 
-              *ngFor="let activity of displayActivities" 
-              [activity]=activity>
+              [activities]=displayActivities>
             </app-activity>
-          </ul>
+      
         </section>
         <app-add-activity *ngIf="selectedDay" (newActivity)="onNewActivityAdded($event)"></app-add-activity>
       </div>

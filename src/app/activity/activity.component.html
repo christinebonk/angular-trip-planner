@@ -1,4 +1,5 @@
-<li>
-	<span> {{ activity.activityTime }} </span>{{ activity.name }}
-</li>
-
+<ul class="activity-list">
+	<li *ngFor="let activity of activities">
+		<span> {{ activity.activityTime }} </span>{{ activity.name }}
+	</li>
+</ul>
