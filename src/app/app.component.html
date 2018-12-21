@@ -27,7 +27,7 @@
       <div class="col-sm-8">
         <!--Day Title-->
         <section id="day-display">
-          <h3 *ngIf="selectedDay"> {{ selectedDay.date }} </h3>
+          <h3 *ngIf="selectedDay"> Day {{selectedDay.index + 1 }}: {{ selectedDay.date }} </h3>
           <!--Day Editor-->
           <app-edit-day
             *ngIf="selectedDay" 

@@ -28,7 +28,7 @@ export class AppComponent {
 		new Activity('Gardening', 8, 'Feb 8 2019')
 	]
 	displayActivities: [] = [];
-	selectedDay: string; 
+	selectedDay: Day; 
 	daysAway: string = this.getTimeDiff(this.startDate);
 
 	onNewActivityAdded(activity) {
@@ -70,10 +70,14 @@ export class AppComponent {
 		this.days.push(newDay);
 	}
 
-	dayClicked(day) { //filters the activities for the day clicked
+	dayClicked(day) { //filters the activities for the day clicked and sets selected day
 		this.displayActivities = this.activities.filter(activity => activity.activityDate === day.date);
 		this.displayActivities = this.displayActivities.sort((a,b) => parseFloat(a.activityTime) - parseFloat(b.activityTime));
 		this.selectedDay = day;
-	}
-
+		this.days.forEach((element, index) => {
+			if(element === day) {
+				this.selectedDay.index = index;
+			}
+		});
+	}	
 }
