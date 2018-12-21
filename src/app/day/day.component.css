@@ -3,7 +3,8 @@
 
 .day-container:hover {
 	background: #C44536;
-	transition: 0.3s ease;
+	transition: all 0.3s ease;
+	color: white;
 	
 }
 
@@ -11,3 +12,4 @@ a {
 	font-weight: bold;
 	color: black;
 }
+

@@ -48,3 +48,19 @@ section#trip-stats h4{
 app-activity:last-child > li[_ngcontent-c3] {
 	color: blue;
 }
+
+span.edit {
+	color: white;
+	padding-left: 15px;
+	font-size: 0.8rem;
+}
+
+span.edit:hover {
+	text-decoration: underline;
+	cursor: pointer;
+}
+
+#trip-title {
+	display: flex;
+	align-items: center;
+}

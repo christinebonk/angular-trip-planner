@@ -7,6 +7,7 @@ import { ActivityComponent } from './activity/activity.component';
 import { DayComponent } from './day/day.component';
 import { EditDayComponent } from './edit-day/edit-day.component';
 import { AddActivityComponent } from './add-activity/add-activity.component';
+import { ModalComponent } from './modal/modal.component';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { AddActivityComponent } from './add-activity/add-activity.component';
     ActivityComponent,
     DayComponent,
     EditDayComponent,
-    AddActivityComponent  
+    AddActivityComponent,
+    ModalComponent  
   ],
   imports: [
     BrowserModule,

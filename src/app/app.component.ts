@@ -30,6 +30,7 @@ export class AppComponent {
 	displayActivities: [] = [];
 	selectedDay: Day; 
 	daysAway: string = this.getTimeDiff(this.startDate);
+	modalOpen: boolean = false;
 
 	onNewActivityAdded(activity) {
 		activity.activityDate = this.selectedDay.date;
@@ -80,4 +81,8 @@ export class AppComponent {
 			}
 		});
 	}	
+
+	modalToggle(a) {
+		this.modalOpen = a;
+	}
 }
