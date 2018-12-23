@@ -66,6 +66,22 @@ export class AppComponent {
 		return dayOfWeek[weekIndex] + ', ' + monthNames[monthIndex] + ' ' + day;
 	}
 
+	formatDate(date) { //formats date
+		let selectedDate = new Date(date);
+		const monthNames = [
+		"Jan", "Feb", "Mar",
+		"Apr", "May", "Jun", "Jul",
+		"Aug", "Sep", "Oct",
+		"Nov", "Dec"
+		];
+		const dayOfWeek = [ "Sun", "Mon", "Tues", "Wed", "Thurs", "Fri", "Sat"
+		]
+		const day = selectedDate.getDate() + 1;
+		const monthIndex = selectedDate.getMonth();
+		const weekIndex = selectedDate.getDay() + 1;
+		return dayOfWeek[weekIndex] + ', ' + monthNames[monthIndex] + ' ' + day;
+	}
+
 	addDay() { //adds a new date to days array
 		let newDay = new Day ('', '', '');
 		let dayNumber = this.days.length;
@@ -89,6 +105,15 @@ export class AppComponent {
 	}
 
 	appModalSave(a) {
-		console.log(a);
+		this.tripName = a.name;
+		this.startDate = this.formatDate(a.date);
+		this.startDateChange();
+	}
+
+	startDateChange() {
+		this.days.forEach((day, index) => {
+			day.date = this.getDate(index);
+		});
+		console.log(this.days)
 	}
 }
