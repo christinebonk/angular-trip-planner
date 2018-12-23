@@ -9,7 +9,8 @@ import { Activity } from './shared/activity.model';
 })
 export class AppComponent {
 	title = 'trip-planner';
-	startDate = 'February 8 2019';
+	startDate = 'Feb 8 2019';
+	startDateFormatted = new Date (this.startDate).toISOString().substr(0, 10);;
 	tripName: string = 'Your Trip'
 	days: Day[] = [
 		new Day('Toronto', 'New York', 'Feb 8 2019'),
@@ -87,7 +88,7 @@ export class AppComponent {
 		this.modalOpen = a;
 	}
 
-	modalSave(a) {
+	appModalSave(a) {
 		console.log(a);
 	}
 }

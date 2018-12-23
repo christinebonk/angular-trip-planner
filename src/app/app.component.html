@@ -48,5 +48,12 @@
       </div>
     </div>
   </div>
-  <app-modal *ngIf="modalOpen" (onModalClose)="modalToggle($event)" (onModalSave)="modalSave($event)"></app-modal>
+  <app-modal 
+    *ngIf="modalOpen" 
+    (onModalClose)="modalToggle($event)" 
+    (onModalSave)="appModalSave($event)"
+    [name]=tripName
+    [startDate]=startDateFormatted
+    >
+  </app-modal>
 </main>

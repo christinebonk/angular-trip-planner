@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 
 @Component({
   selector: 'app-modal',
@@ -8,17 +8,23 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 export class ModalComponent implements OnInit {
 	@Output() onModalClose = new EventEmitter<boolean>(); 
 	@Output() onModalSave = new EventEmitter<{}>(); 
-	
+	@Input() name: string;
+	@Input() startDate: Date;
+
+
+
 	modalClose() {
 		this.onModalClose.emit(false);
 	}
 
-	modalSave(nameInput: HTMLInputElement, timeInput: HTMLInputElement) {
+	modalSave(nameInput: HTMLInputElement, timeInput: HTMLInputElement, dateInput: HTMLInputElement) {
 		let userInput = { 
 			time: timeInput.value,
-			name: nameInput.value
+			name: nameInput.value,
+			date: dateInput.value
 		} 
 		this.onModalSave.emit(userInput);
+		this.modalClose();
 	}
 
 	constructor() { }
