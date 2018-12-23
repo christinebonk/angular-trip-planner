@@ -1,4 +1,4 @@
-<div class="app-modal-background" (click)="modalClose()">
+<div class="app-modal-background">
 <div class="app-modal" role="dialog">
 	<div class="app-modal-header">
 		<h2>Modal Header</h2>
@@ -18,8 +18,9 @@
 
 	</div>
 	<div class="app-modal-footer">
-		<button type="button" class="btn btn-primary">Save changes</button>
+		<button type="button" (click)="modalSave()" class="btn btn-primary">Save changes</button>
         <button type="button" (click)="modalClose()" class="btn btn-secondary">Close</button>
     </div>
 </div>
 </div>
+

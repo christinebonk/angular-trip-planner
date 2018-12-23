@@ -1,7 +1,7 @@
 <!--Header-->
 <header>
   <section id="trip-title">
-    <h1>Your Trip</h1> <span (click)="modalToggle(true)" class="edit">edit</span>
+    <h1>{{ tripName }}</h1> <span (click)="modalToggle(true)" class="edit">edit</span>
   </section>  
   <section id="trip-stats">
     <h4>Starts {{startDate}} </h4>
@@ -48,5 +48,5 @@
       </div>
     </div>
   </div>
-  <app-modal *ngIf="modalOpen" (onModalClose)="modalToggle($event)"></app-modal>
+  <app-modal *ngIf="modalOpen" (onModalClose)="modalToggle($event)" (onModalSave)="modalSave($event)"></app-modal>
 </main>

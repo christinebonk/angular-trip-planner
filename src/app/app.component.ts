@@ -10,6 +10,7 @@ import { Activity } from './shared/activity.model';
 export class AppComponent {
 	title = 'trip-planner';
 	startDate = 'February 8 2019';
+	tripName: string = 'Your Trip'
 	days: Day[] = [
 		new Day('Toronto', 'New York', 'Feb 8 2019'),
 		new Day('New York', '', 'Feb 9 2019'),
@@ -82,7 +83,11 @@ export class AppComponent {
 		});
 	}	
 
-	modalToggle(a) {
+	modalToggle(a) { //toggles modal
 		this.modalOpen = a;
+	}
+
+	modalSave(a) {
+		console.log(a);
 	}
 }
