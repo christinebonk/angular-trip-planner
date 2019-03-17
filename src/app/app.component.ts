@@ -17,7 +17,7 @@ export class AppComponent {
 		new Day('New York', '', 'Feb 9 2019'),
 		new Day('New York', 'Chicago', 'Feb 10 2019')
 	];
-	activities: Activity[] = [
+	activities = [
 		new Activity('Bellavista', 2, 'Feb 9 2019'),
 		new Activity('Lunch', 3, 'Feb 9 2019'),
 		new Activity('Lunch', 4, 'Feb 10 2019'),
@@ -28,17 +28,17 @@ export class AppComponent {
 		new Activity('Flower picking', 7, 'Feb 8 2019'),
 		new Activity('Wine Tour', 10, 'Feb 9 2019'),
 		new Activity('Gardening', 8, 'Feb 8 2019')
-	]
+	];
 	displayActivities: [] = [];
 	selectedDay: Day; 
-	daysAway: string = this.getTimeDiff(this.startDate);
+	daysAway = this.getTimeDiff(this.startDate);
 	modalOpen: boolean = false;
 
 	onNewActivityAdded(activity) {
 		activity.activityDate = this.selectedDay.date;
 		this.activities.push(activity);
 		this.dayClicked(this.selectedDay);
-	}
+	};
 
 	getTimeDiff(endDate) { //calculates how many days away the trip is
 		const date1 = new Date();
@@ -46,7 +46,7 @@ export class AppComponent {
 		const timeDiff = Math.abs(date2.getTime() - date1.getTime());
 		const diffDays = Math.ceil(timeDiff / (1000 * 3600 * 24)); 
 		return diffDays
-	}
+	};
 
 	getDate(i) { //gets the date based on start date
 		const startDate = new Date(this.startDate);
@@ -64,7 +64,7 @@ export class AppComponent {
 		const monthIndex = selectedDate.getMonth();
 		const weekIndex = selectedDate.getDay();
 		return dayOfWeek[weekIndex] + ', ' + monthNames[monthIndex] + ' ' + day;
-	}
+	};
 
 	formatDate(date) { //formats date
 		let selectedDate = new Date(date);
@@ -80,14 +80,14 @@ export class AppComponent {
 		const monthIndex = selectedDate.getMonth();
 		const weekIndex = selectedDate.getDay() + 1;
 		return dayOfWeek[weekIndex] + ', ' + monthNames[monthIndex] + ' ' + day;
-	}
+	};
 
 	addDay() { //adds a new date to days array
 		let newDay = new Day ('', '', '');
 		let dayNumber = this.days.length;
 		newDay.date = this.getDate(dayNumber);
 		this.days.push(newDay);
-	}
+	};
 
 	dayClicked(day) { //filters the activities for the day clicked and sets selected day
 		this.displayActivities = this.activities.filter(activity => activity.activityDate === day.date);
@@ -98,22 +98,22 @@ export class AppComponent {
 				this.selectedDay.index = index;
 			}
 		});
-	}	
+	};	
 
 	modalToggle(a) { //toggles modal
 		this.modalOpen = a;
-	}
+	};
 
 	appModalSave(a) {
 		this.tripName = a.name;
 		this.startDate = this.formatDate(a.date);
 		this.startDateChange();
-	}
+	};
 
 	startDateChange() {
 		this.days.forEach((day, index) => {
 			day.date = this.getDate(index);
 		});
 		console.log(this.days)
-	}
-}
+	};
+};
