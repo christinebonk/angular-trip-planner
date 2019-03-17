@@ -31,10 +31,9 @@ export class AddActivityComponent implements OnInit {
 		this.aService.addActivity(new Activity(nameInput.value, time, ''), this.selectedDay);
 	}
 
-  
 
-  ngOnInit() {
-  	this.selectedDay = this.dService.getSelectedDay();
-  }
+	ngOnInit() {
+		this.selectedDay = this.dService.getSelectedDay();
+	}
 
 }

@@ -21,7 +21,7 @@
         <app-day *ngFor="let day of days; let i = index" [day]=day>
           <h2>Day {{ i + 1 }} <span class="date">{{ getDate(i) }}</span></h2>
         </app-day>
-        <button class="btn btn-primary" (click)='addDay()'>
+        <button class="btn btn-primary" (click)='onAddDay()'>
           Add Day
         </button>
       </div>
@@ -44,7 +44,7 @@
             </app-activity>
       
         </section>
-        <app-add-activity *ngIf="selectedDay" (newActivity)="onNewActivityAdded($event)"></app-add-activity>
+        <app-add-activity *ngIf="selectedDay"></app-add-activity>
       </div>
     </div>
   </div>

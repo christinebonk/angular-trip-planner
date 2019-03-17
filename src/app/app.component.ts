@@ -33,7 +33,7 @@ export class AppComponent implements OnInit {
 	        (updatedActivities: Activity[]) => {
 	        	this.activities = updatedActivities;
 		    	}
-	    )
+	    );
 
 		//subscribe to updated selected day
 		this.dService.daySelected.subscribe((day: Day) => {
@@ -43,6 +43,11 @@ export class AppComponent implements OnInit {
 		//subscribe to updated display activities changed
 		this.aService.displayedActivitiesChanged.subscribe((dActivity: Activity[]) =>{
 			this.displayActivities = dActivity;
+		});
+
+		//subscribed to updated days 
+		this.dService.dayAdded.subscribe((days: Day[]) => {
+			this.days = days;
 		})
 	}
 
@@ -52,12 +57,6 @@ export class AppComponent implements OnInit {
 		this.days = this.dService.getDays();
 		
 	}
-
-	onNewActivityAdded(activity) {
-		activity.activityDate = this.selectedDay.date;
-		this.activities.push(activity);
-		this.dayClicked(this.selectedDay);
-	};
 
 	getTimeDiff(endDate) { //calculates how many days away the trip is
 		const date1 = new Date();
@@ -101,12 +100,9 @@ export class AppComponent implements OnInit {
 		return dayOfWeek[weekIndex] + ', ' + monthNames[monthIndex] + ' ' + day;
 	};
 
-	addDay() { //adds a new date to days array
-		let newDay = new Day ('', '', '');
-		let dayNumber = this.days.length;
-		newDay.date = this.getDate(dayNumber);
-		this.days.push(newDay);
-	};
+	onAddDay() {
+		this.dService.addDay();
+	}
 
 	modalToggle(a) { //toggles modal
 		this.modalOpen = a;

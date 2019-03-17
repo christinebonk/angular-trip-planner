@@ -8,6 +8,7 @@ export class DaysService {
 
 	constructor(private aService: ActivitiesService) {}
 
+	dayAdded: Day[] = new EventEmitter<Day[]>();
 	daySelected: Day = new EventEmitter<Day>();
 	selectedDay: Day;
 
@@ -24,6 +25,15 @@ export class DaysService {
 	getSelectedDay() {
 		return this.selectedDay;
 	}
+
+
+	addDay() { //adds a new date to days array
+		let newDay = new Day ('', '', '');
+		let dayNumber = this.days.length;
+		newDay.date = this.getDate(dayNumber);
+		this.days.push(newDay);
+		this.dayAdded.emit(this.days);
+	};
 
 	selectDay(day) {
 		this.selectedDay = day;	
