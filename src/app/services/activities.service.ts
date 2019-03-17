@@ -1,5 +1,6 @@
 import { EventEmitter } from '@angular/core';
 import { Activity } from '../shared/activity.model';
+import { Day } from '../shared/day.model';
 
 export class ActivitiesService {
 	activitiesChanged = new EventEmitter<Activity[]>();
@@ -24,17 +25,17 @@ export class ActivitiesService {
 	}
 
 	//adds activities
-	addActivity(activity: Activity) {
+	addActivity(activity: Activity, day: Day) {
+		activity.activityDate = day.date;
 		this.activities.push(activity);
 		this.activitiesChanged.emit(this.activities.slice());
-		console.log(this.activities);
+		this.displayActivities(day);
 	}
 
 	//returns activities for selected date
 	displayActivities(day) {
 		this.displayedActivities = this.activities.filter(activity => activity.activityDate === day.date);
 		this.displayedActivities = this.displayedActivities.sort((a,b) => parseFloat(a.activityTime) - parseFloat(b.activityTime));
-		
 		this.displayedActivitiesChanged.emit(this.displayedActivities.slice());
 	}
 
