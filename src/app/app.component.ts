@@ -1,38 +1,43 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Day } from './shared/day.model';
 import { Activity } from './shared/activity.model';
+import { ActivitiesService } from './services/activities.service';
+import { DaysService } from './services/days.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
+
+	//declare variables
+	activities: Activity[] = [];
 	title = 'trip-planner';
 	startDate = 'Feb 8 2019';
 	startDateFormatted = new Date (this.startDate).toISOString().substr(0, 10);;
 	tripName: string = 'Your Trip'
-	days: Day[] = [
-		new Day('Toronto', 'New York', 'Feb 8 2019'),
-		new Day('New York', '', 'Feb 9 2019'),
-		new Day('New York', 'Chicago', 'Feb 10 2019')
-	];
-	activities = [
-		new Activity('Bellavista', 2, 'Feb 9 2019'),
-		new Activity('Lunch', 3, 'Feb 9 2019'),
-		new Activity('Lunch', 4, 'Feb 10 2019'),
-		new Activity('Flying', 6, 'Feb 10 2019'),
-		new Activity('Museum', 1, 'Feb 8 2019'),
-		new Activity('Walk in Park', 23, 'Feb 10 2019'),
-		new Activity('Beach Time', 11, 'Feb 9 2019'),
-		new Activity('Flower picking', 7, 'Feb 8 2019'),
-		new Activity('Wine Tour', 10, 'Feb 9 2019'),
-		new Activity('Gardening', 8, 'Feb 8 2019')
-	];
+	days: Day[] = [];
 	displayActivities: [] = [];
 	selectedDay: Day; 
 	daysAway = this.getTimeDiff(this.startDate);
 	modalOpen: boolean = false;
+
+	constructor(
+		private aService: ActivitiesService, 
+		private dService: DaysService) { 
+		this.aService.activitiesChanged.subscribe(
+        (updatedActivities: Activity[]) => {
+        	this.activities = updatedActivities;
+        }
+      )
+	}
+
+	//functions
+	ngOnInit() {
+		this.activities = this.aService.getActivities();
+		this.days = this.dService.getDays();
+	}
 
 	onNewActivityAdded(activity) {
 		activity.activityDate = this.selectedDay.date;

@@ -1,7 +1,9 @@
+import { EventEmitter } from '@angular/core';
 import { Activity } from '../shared/activity.model';
 
 export class ActivitiesService {
-	activities: Activity[] = [
+	activitiesChanged = new EventEmitter<Activity[]>();
+	private activities: Activity[] = [
 		new Activity('Bellavista', 2, 'Feb 9 2019'),
 		new Activity('Lunch', 3, 'Feb 9 2019'),
 		new Activity('Lunch', 4, 'Feb 10 2019'),
@@ -17,4 +19,12 @@ export class ActivitiesService {
 	getActivities() {
 		return this.activities.slice();
 	}
+
+	addActivity(activity: Activity) {
+		this.activities.push(activity);
+		this.activitiesChanged.emit(this.activities.slice());
+		console.log(this.activities);
+	}
+
+
 }

@@ -1,5 +1,6 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { Activity } from '../shared/activity.model';
+import { ActivitiesService } from '../services/activities.service';
 
 @Component({
   selector: 'app-add-activity',
@@ -8,6 +9,8 @@ import { Activity } from '../shared/activity.model';
 })
 export class AddActivityComponent implements OnInit {
 	@Output() newActivity = new EventEmitter< Activity >();
+
+	constructor(private aService: ActivitiesService) { }
 
 	timeStringToFloat(time) {
 	  var hoursMinutes = time.split(/[.:]/);
@@ -18,12 +21,12 @@ export class AddActivityComponent implements OnInit {
 	  return final;
 	}
 
-	addActivity(nameInput: HTMLInputElement, timeInput: HTMLInputElement) {
+	onAddActivity(nameInput: HTMLInputElement, timeInput: HTMLInputElement) {
 		let time = this.timeStringToFloat(timeInput.value);
-		this.newActivity.emit(new Activity(nameInput.value, time, ''))
+		this.aService.addActivity(new Activity(nameInput.value, time, ''));
 	}
 
-  constructor() { }
+  
 
   ngOnInit() {
   }

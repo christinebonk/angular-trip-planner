@@ -8,6 +8,8 @@ import { DayComponent } from './day/day.component';
 import { EditDayComponent } from './edit-day/edit-day.component';
 import { AddActivityComponent } from './add-activity/add-activity.component';
 import { ModalComponent } from './modal/modal.component';
+import { ActivitiesService } from './services/activities.service';
+import { DaysService } from './services/days.service';
 
 @NgModule({
   declarations: [
@@ -23,7 +25,7 @@ import { ModalComponent } from './modal/modal.component';
     AppRoutingModule,
     FormsModule
   ],
-  providers: [],
+  providers: [ ActivitiesService, DaysService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
