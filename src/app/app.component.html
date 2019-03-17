@@ -18,7 +18,7 @@
         <section id="itinerary-display">
           <h3>Itinerary Overview</h3>
         </section>
-        <app-day *ngFor="let day of days; let i = index" [day]=day (onDayClick)='dayClicked($event)'>
+        <app-day *ngFor="let day of days; let i = index" [day]=day>
           <h2>Day {{ i + 1 }} <span class="date">{{ getDate(i) }}</span></h2>
         </app-day>
         <button class="btn btn-primary" (click)='addDay()'>

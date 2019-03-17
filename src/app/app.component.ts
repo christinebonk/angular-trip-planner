@@ -23,20 +23,34 @@ export class AppComponent implements OnInit {
 	daysAway = this.getTimeDiff(this.startDate);
 	modalOpen: boolean = false;
 
+	//constructor
 	constructor(
 		private aService: ActivitiesService, 
 		private dService: DaysService) { 
+
+		//subscribe to updated activities
 		this.aService.activitiesChanged.subscribe(
-        (updatedActivities: Activity[]) => {
-        	this.activities = updatedActivities;
-        }
-      )
+	        (updatedActivities: Activity[]) => {
+	        	this.activities = updatedActivities;
+		    	}
+	    )
+
+		//subscribe to updated selected day
+		this.dService.daySelected.subscribe((day: Day) => {
+	  		this.selectedDay = day;
+	  	});
+
+		//subscribe to updated display activities changed
+		this.aService.displayedActivitiesChanged.subscribe((dActivity: Activity[]) =>{
+			this.displayActivities = dActivity;
+		})
 	}
 
-	//functions
+	//On Init
 	ngOnInit() {
 		this.activities = this.aService.getActivities();
 		this.days = this.dService.getDays();
+		
 	}
 
 	onNewActivityAdded(activity) {
@@ -93,17 +107,6 @@ export class AppComponent implements OnInit {
 		newDay.date = this.getDate(dayNumber);
 		this.days.push(newDay);
 	};
-
-	dayClicked(day) { //filters the activities for the day clicked and sets selected day
-		this.displayActivities = this.activities.filter(activity => activity.activityDate === day.date);
-		this.displayActivities = this.displayActivities.sort((a,b) => parseFloat(a.activityTime) - parseFloat(b.activityTime));
-		this.selectedDay = day;
-		this.days.forEach((element, index) => {
-			if(element === day) {
-				this.selectedDay.index = index;
-			}
-		});
-	};	
 
 	modalToggle(a) { //toggles modal
 		this.modalOpen = a;

@@ -3,6 +3,7 @@ import { Activity } from '../shared/activity.model';
 
 export class ActivitiesService {
 	activitiesChanged = new EventEmitter<Activity[]>();
+	displayedActivitiesChanged = new EventEmitter<Activity[]>();
 	private activities: Activity[] = [
 		new Activity('Bellavista', 2, 'Feb 9 2019'),
 		new Activity('Lunch', 3, 'Feb 9 2019'),
@@ -15,16 +16,27 @@ export class ActivitiesService {
 		new Activity('Wine Tour', 10, 'Feb 9 2019'),
 		new Activity('Gardening', 8, 'Feb 8 2019')
 	];
+	private displayedActivities: Activity[];
 
+	//returns all activities
 	getActivities() {
 		return this.activities.slice();
 	}
 
+	//adds activities
 	addActivity(activity: Activity) {
 		this.activities.push(activity);
 		this.activitiesChanged.emit(this.activities.slice());
 		console.log(this.activities);
 	}
 
+	//returns activities for selected date
+	displayActivities(day) {
+		this.displayedActivities = this.activities.filter(activity => activity.activityDate === day.date);
+		this.displayedActivities = this.displayedActivities.sort((a,b) => parseFloat(a.activityTime) - parseFloat(b.activityTime));
+		
+		this.displayedActivitiesChanged.emit(this.displayedActivities.slice());
+	}
 
 }
+
