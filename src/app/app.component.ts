@@ -66,7 +66,7 @@ export class AppComponent implements OnInit {
 		return diffDays
 	};
 
-	getDate(i) { //gets the date based on start date
+	getDate(i) { //gets the date based on start date - may be able to remove
 		const startDate = new Date(this.startDate);
 		let date = startDate.setDate(startDate.getDate() + i);
 		let selectedDate = new Date(date);
