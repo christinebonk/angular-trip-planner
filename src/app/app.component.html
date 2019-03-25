@@ -37,12 +37,10 @@
           </app-edit-day>
         </section>
         <!--Acitivity Display-->
-        <section id="activity-container">
-          
-            <app-activity 
-              [activities]=displayActivities>
+        <section id="activity-container">      
+            <app-activity *ngIf="displayActivities"
+              [activities]=displayActivities> 
             </app-activity>
-      
         </section>
         <app-add-activity *ngIf="selectedDay"></app-add-activity>
       </div>

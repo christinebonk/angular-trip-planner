@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit  } from '@angular/core';
 import { Day } from './shared/day.model';
 import { Activity } from './shared/activity.model';
 import { ActivitiesService } from './services/activities.service';
@@ -9,7 +9,7 @@ import { DaysService } from './services/days.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit {
+export class AppComponent implements OnInit  {
 
 	//declare variables
 	activities: Activity[] = [];
@@ -18,10 +18,10 @@ export class AppComponent implements OnInit {
 	startDateFormatted = new Date (this.startDate).toISOString().substr(0, 10);;
 	tripName: string = 'Your Trip'
 	days: Day[] = [];
-	displayActivities: [] = [];
-	selectedDay: Day; 
+	displayActivities: [];
+	selectedDay= this.days[0];
 	daysAway = this.getTimeDiff(this.startDate);
-	modalOpen: boolean = true;
+	modalOpen: boolean = false;
 
 	//constructor
 	constructor(
@@ -55,7 +55,8 @@ export class AppComponent implements OnInit {
 	ngOnInit() {
 		this.activities = this.aService.getActivities();
 		this.days = this.dService.getDays();
-		
+		this.selectedDay = this.days[0];
+		console.log(this.selectedDay)
 	}
 
 	getTimeDiff(endDate) { //calculates how many days away the trip is

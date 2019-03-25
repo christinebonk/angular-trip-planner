@@ -14,9 +14,9 @@ export class DaysService {
 	startDate = 'Feb 8 2019';
 
 	private days: Day[] = [
-		new Day('Toronto', 'New York', 'Feb 8 2019'),
-		new Day('New York', '', 'Feb 9 2019'),
-		new Day('New York', 'Chicago', 'Feb 10 2019')
+		new Day('Toronto', 'New York', 'Feb 8 2019', 0),
+		new Day('New York', '', 'Feb 9 2019', 1),
+		new Day('New York', 'Chicago', 'Feb 10 2019', 2)
 	];
 
 	getDays() {
