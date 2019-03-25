@@ -21,7 +21,7 @@ export class AppComponent implements OnInit {
 	displayActivities: [] = [];
 	selectedDay: Day; 
 	daysAway = this.getTimeDiff(this.startDate);
-	modalOpen: boolean = false;
+	modalOpen: boolean = true;
 
 	//constructor
 	constructor(
